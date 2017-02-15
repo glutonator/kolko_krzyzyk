@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{D303A662-28EE-4066-AA72-C845EF9FA31F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kolko", "kolko\kolko.csproj", "{AEF247A9-7F45-45F6-8E1D-8438929E635A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D303A662-28EE-4066-AA72-C845EF9FA31F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D303A662-28EE-4066-AA72-C845EF9FA31F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D303A662-28EE-4066-AA72-C845EF9FA31F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D303A662-28EE-4066-AA72-C845EF9FA31F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEF247A9-7F45-45F6-8E1D-8438929E635A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEF247A9-7F45-45F6-8E1D-8438929E635A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEF247A9-7F45-45F6-8E1D-8438929E635A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEF247A9-7F45-45F6-8E1D-8438929E635A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
