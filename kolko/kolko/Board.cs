@@ -10,7 +10,7 @@ namespace kolko
 {
     public sealed class Board
     {
-        private string board_string;
+        //private string board_string;
         private int iterator;
         //private ArrayList board_array;
         //private Hashtable board_hashtbale;
@@ -42,17 +42,15 @@ namespace kolko
             }
         }
 
-        public string get_board_string ()
-        {
-            iterator++;
-            return board_string;
-        }
+ 
         public int get_iterator()
         {
             return iterator;
         }
         public void set_board_hashtbale (int _iterator, string _charrr)
         {
+            iterator++;
+            //get_iterator();
             //board_dictionary.Wh
             //int i = 5;
 
@@ -64,6 +62,27 @@ namespace kolko
             //board_dictionary.where();
             Console.Write("");
 
+        }
+
+        public bool is_set_board_hashtbale(int _iterator)
+        {
+            //board_dictionary.Contains(KeyValuePair< _iterator, "sss" >);
+            //object oooo = new KeyValuePair<int, string>(2222, "dsds");
+            //board_dictionary.Contains<int,string>(_iterator);
+            //bool test = board_dictionary.Contains<KeyValuePair<int, string>>(new KeyValuePair<int, string>(_iterator, "X"));
+            
+            //warunki czy jest juz uzupełnione pole
+            if(board_dictionary.Contains<KeyValuePair<int, string>>(new KeyValuePair<int, string>(_iterator, "X")))
+            {
+                Console.WriteLine("duzo XXXXXXXXXXXXXX");
+                return true;
+            }
+            if(board_dictionary.Contains<KeyValuePair<int, string>>(new KeyValuePair<int, string>(_iterator, "O")))
+            {
+                Console.WriteLine("duzo OOOOOOOOOOOOO");
+                return true;
+            }
+            return false;
         }
 
         public void print()

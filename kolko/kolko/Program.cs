@@ -15,18 +15,40 @@ namespace kolko
             _timer = new Timer(3000);
             _timer.Elapsed += new ElapsedEventHandler(_timer_Elapsed);
             _timer.Start();
-            //string board;
 
             Console.BackgroundColor = ConsoleColor.DarkBlue;
-            //Board plansza = plansza.Instace();
-            //object board=Board.Instace.get_board_string();
-            //Console.Write(board);
 
             //!Console.KeyAvailable
             // while (!(Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Escape))
             {
 
             }
+            while (true)
+            {//96-0    105-9
+                if(Console.KeyAvailable)
+                {
+                    var input = Console.ReadKey();
+                    //konwersja wciśnietego klawisza na int
+                    if (char.IsDigit(input.KeyChar))
+                    {
+                        int input_digit = int.Parse(input.KeyChar.ToString());
+
+                        if(Board.Instace.get_iterator()%2==0)
+                        {
+                            Board.Instace.set_board_hashtbale(input_digit, "X");
+                            Board.Instace.is_set_board_hashtbale(input_digit);
+                        }
+                        else
+                        {
+                            Board.Instace.set_board_hashtbale(input_digit, "O");
+                            Board.Instace.is_set_board_hashtbale(input_digit);
+
+                        }
+                    }
+                }
+            }
+
+            //koniec programu
             Console.ReadKey(true);
 
         }
@@ -34,12 +56,7 @@ namespace kolko
         private static void _timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             Console.Clear();
-
-            object board = Board.Instace.get_board_string();
-            object buu = Board.Instace.get_iterator();
-            Board.Instace.set_board_hashtbale(2,"p");
-            //Console.Write(board);
-            //Console.Write(buu);
+            //Board.Instace.set_board_hashtbale(2,"p");
             Board.Instace.print();
 
 
