@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
-using System.Linq;
+//using System.Linq;
 
 namespace kolko
 {
@@ -14,7 +14,7 @@ namespace kolko
         private int iterator;
         //private ArrayList board_array;
         //private Hashtable board_hashtbale;
-        private Dictionary<int,string> board_dictionary;
+        private Dictionary<int, string> board_dictionary;
 
         //singleton
         private static readonly Board instace = new Board();
@@ -31,7 +31,7 @@ namespace kolko
         }
         //koniec deklaracji singletona
 
-        public void init ()
+        public void init()
         {
             iterator = 0;
             board_dictionary = new Dictionary<int, string>(9);
@@ -42,12 +42,12 @@ namespace kolko
             }
         }
 
- 
+
         public int get_iterator()
         {
             return iterator;
         }
-        public void set_board_hashtbale (int _iterator, string _charrr)
+        public void set_board_hashtbale(int _iterator, string _charrr)
         {
             iterator++;
             //get_iterator();
@@ -61,6 +61,7 @@ namespace kolko
             //ggg.
             //board_dictionary.where();
             Console.Write("");
+            print();
 
         }
 
@@ -70,14 +71,19 @@ namespace kolko
             //object oooo = new KeyValuePair<int, string>(2222, "dsds");
             //board_dictionary.Contains<int,string>(_iterator);
             //bool test = board_dictionary.Contains<KeyValuePair<int, string>>(new KeyValuePair<int, string>(_iterator, "X"));
-            
+
             //warunki czy jest juz uzupełnione pole
-            if(board_dictionary.Contains<KeyValuePair<int, string>>(new KeyValuePair<int, string>(_iterator, "X")))
+
+            //to jest długi sposób
+            //if (board_dictionary.Contains<KeyValuePair<int, string>>(new KeyValuePair<int, string>(_iterator, "X")))
+
+            //krótki sposób
+            if (board_dictionary.Contains(new KeyValuePair<int, string>(_iterator, "X")))
             {
                 Console.WriteLine("duzo XXXXXXXXXXXXXX");
                 return true;
             }
-            if(board_dictionary.Contains<KeyValuePair<int, string>>(new KeyValuePair<int, string>(_iterator, "O")))
+            if (board_dictionary.Contains(new KeyValuePair<int, string>(_iterator, "O")))
             {
                 Console.WriteLine("duzo OOOOOOOOOOOOO");
                 return true;
@@ -87,9 +93,10 @@ namespace kolko
 
         public void print()
         {
+            Console.Clear();
             for (int i = 0; i < 3; i++)
             {
-                Console.Write(board_dictionary[7+i]);
+                Console.Write(board_dictionary[7 + i]);
             }
             Console.WriteLine();
             for (int i = 0; i < 3; i++)
@@ -104,6 +111,47 @@ namespace kolko
             }
             Console.WriteLine();
 
+        }
+
+        public bool is_win()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                if (board_dictionary.Contains(new KeyValuePair<int, string>(7 + i, "O")) &&
+                board_dictionary.Contains(new KeyValuePair<int, string>(4 + i, "O")) &&
+                board_dictionary.Contains(new KeyValuePair<int, string>(1 + i, "O")))
+                {
+                    return true;
+                }
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (board_dictionary.Contains(new KeyValuePair<int, string>(1*i, "O")) &&
+                            board_dictionary.Contains(new KeyValuePair<int, string>(2*i, "O")) &&
+                            board_dictionary.Contains(new KeyValuePair<int, string>(3*i, "O")))
+                {
+                    return true;
+                }
+            }
+
+           
+            //7-5-3
+            if (board_dictionary.Contains(new KeyValuePair<int, string>(7, "O")) &&
+                            board_dictionary.Contains(new KeyValuePair<int, string>(5, "O")) &&
+                            board_dictionary.Contains(new KeyValuePair<int, string>(3, "O")))
+            {
+                return true;
+            }
+            //9-5-1
+            if (board_dictionary.Contains(new KeyValuePair<int, string>(9, "O")) &&
+                            board_dictionary.Contains(new KeyValuePair<int, string>(5, "O")) &&
+                            board_dictionary.Contains(new KeyValuePair<int, string>(1, "O")))
+            {
+                return true;
+            }
+            //jak żaden warunke nie jest spełniony
+            return false;
         }
     }
 }

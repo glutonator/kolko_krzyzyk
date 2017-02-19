@@ -11,10 +11,10 @@ namespace kolko
     {
         static void Main(string[] args)
         {
-            Timer _timer;
-            _timer = new Timer(3000);
-            _timer.Elapsed += new ElapsedEventHandler(_timer_Elapsed);
-            _timer.Start();
+            //Timer _timer;
+            //_timer = new Timer(3000);
+            //_timer.Elapsed += new ElapsedEventHandler(_timer_Elapsed);
+            //_timer.Start();
 
             Console.BackgroundColor = ConsoleColor.DarkBlue;
 
@@ -23,6 +23,7 @@ namespace kolko
             {
 
             }
+            Board.Instace.print();
             while (true)
             {//96-0    105-9
                 if(Console.KeyAvailable)
@@ -35,20 +36,31 @@ namespace kolko
 
                         if(Board.Instace.get_iterator()%2==0)
                         {
-                            Board.Instace.set_board_hashtbale(input_digit, "X");
-                            Board.Instace.is_set_board_hashtbale(input_digit);
+                            if (!(Board.Instace.is_set_board_hashtbale(input_digit)))
+                            {
+                                Board.Instace.set_board_hashtbale(input_digit, "X");
+                            }
                         }
                         else
                         {
-                            Board.Instace.set_board_hashtbale(input_digit, "O");
-                            Board.Instace.is_set_board_hashtbale(input_digit);
-
+                            if(!(Board.Instace.is_set_board_hashtbale(input_digit)))
+                            {
+                                Board.Instace.set_board_hashtbale(input_digit, "O");
+                            }
                         }
                     }
+                    if(Board.Instace.is_win())
+                    {
+                        break;
+                    }
+                    
+                    //Console.Clear();
+                    //input = ConsoleKeyInfo.
                 }
             }
 
             //koniec programu
+            Console.WriteLine("Koniec gry");
             Console.ReadKey(true);
 
         }
