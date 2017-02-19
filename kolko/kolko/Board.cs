@@ -35,9 +35,11 @@ namespace kolko
         {
             iterator = 0;
             board_dictionary = new Dictionary<int, string>(9);
+
             for (int i = 1; i < 10; i++)
             {
-                string pom = i.ToString();
+                //string pom = i.ToString();
+                string pom = "_";
                 board_dictionary.Add(i, pom);
             }
         }
@@ -67,11 +69,6 @@ namespace kolko
 
         public bool is_set_board_hashtbale(int _iterator)
         {
-            //board_dictionary.Contains(KeyValuePair< _iterator, "sss" >);
-            //object oooo = new KeyValuePair<int, string>(2222, "dsds");
-            //board_dictionary.Contains<int,string>(_iterator);
-            //bool test = board_dictionary.Contains<KeyValuePair<int, string>>(new KeyValuePair<int, string>(_iterator, "X"));
-
             //warunki czy jest juz uzupełnione pole
 
             //to jest długi sposób
@@ -115,38 +112,39 @@ namespace kolko
 
         public bool is_win()
         {
+            //pionowo
             for (int i = 0; i < 3; i++)
             {
-                if (board_dictionary.Contains(new KeyValuePair<int, string>(7 + i, "O")) &&
-                board_dictionary.Contains(new KeyValuePair<int, string>(4 + i, "O")) &&
-                board_dictionary.Contains(new KeyValuePair<int, string>(1 + i, "O")))
+                if ((board_dictionary.FirstOrDefault(x => x.Key.Equals(7 + i)).Value == board_dictionary.FirstOrDefault(x => x.Key.Equals(4 + i)).Value) &&
+                    (board_dictionary.FirstOrDefault(x => x.Key.Equals(4 + i)).Value == board_dictionary.FirstOrDefault(x => x.Key.Equals(1 + i)).Value) &&
+                    (board_dictionary.FirstOrDefault(x => x.Key.Equals(4 + i)).Value != "_"))
+                {
+                    return true;
+                }
+            }
+            //poziomo
+            for (int i = 0; i < 3; i++)
+            {
+                if ((board_dictionary.FirstOrDefault(x => x.Key.Equals(1 + 3 * i)).Value == board_dictionary.FirstOrDefault(x => x.Key.Equals(2 + 3 * i)).Value) &&
+                    (board_dictionary.FirstOrDefault(x => x.Key.Equals(2 + 3 * i)).Value == board_dictionary.FirstOrDefault(x => x.Key.Equals(3 + 3 * i)).Value) &&
+                    (board_dictionary.FirstOrDefault(x => x.Key.Equals(2 + 3 * i)).Value != "_"))
                 {
                     return true;
                 }
             }
 
-            for (int i = 0; i < 3; i++)
-            {
-                if (board_dictionary.Contains(new KeyValuePair<int, string>(1*i, "O")) &&
-                            board_dictionary.Contains(new KeyValuePair<int, string>(2*i, "O")) &&
-                            board_dictionary.Contains(new KeyValuePair<int, string>(3*i, "O")))
-                {
-                    return true;
-                }
-            }
-
-           
             //7-5-3
-            if (board_dictionary.Contains(new KeyValuePair<int, string>(7, "O")) &&
-                            board_dictionary.Contains(new KeyValuePair<int, string>(5, "O")) &&
-                            board_dictionary.Contains(new KeyValuePair<int, string>(3, "O")))
+            if ((board_dictionary.FirstOrDefault(x => x.Key.Equals(7)).Value == board_dictionary.FirstOrDefault(x => x.Key.Equals(5)).Value) &&
+                    (board_dictionary.FirstOrDefault(x => x.Key.Equals(5)).Value == board_dictionary.FirstOrDefault(x => x.Key.Equals(3)).Value) &&
+                    (board_dictionary.FirstOrDefault(x => x.Key.Equals(5)).Value != "_"))
             {
                 return true;
             }
             //9-5-1
-            if (board_dictionary.Contains(new KeyValuePair<int, string>(9, "O")) &&
-                            board_dictionary.Contains(new KeyValuePair<int, string>(5, "O")) &&
-                            board_dictionary.Contains(new KeyValuePair<int, string>(1, "O")))
+
+            if ((board_dictionary.FirstOrDefault(x => x.Key.Equals(9)).Value == board_dictionary.FirstOrDefault(x => x.Key.Equals(5)).Value) &&
+                    (board_dictionary.FirstOrDefault(x => x.Key.Equals(5)).Value == board_dictionary.FirstOrDefault(x => x.Key.Equals(1)).Value) &&
+                    (board_dictionary.FirstOrDefault(x => x.Key.Equals(5)).Value != "_"))
             {
                 return true;
             }
